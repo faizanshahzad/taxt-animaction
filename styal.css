@@ -1,0 +1,49 @@
+*,
+*:after,
+*:before {
+	box-sizing: border-box;
+}
+
+body {
+	display: grid;
+	place-items: center;
+	min-height: 100vh;
+	font-family:  "SF Pro Text", "SF Pro Icons", "AOS Icons", "Helvetica Neue", Helvetica, Arial, sans-serif, system-ui;
+	background: hsl(0 0% 2%);
+}
+
+h1 {
+	--font-size: clamp(2rem, 4vw + 1rem, 8rem);
+	background:
+		radial-gradient(circle at center, hsl(0 0% 100% / 0.85), transparent) calc(var(--size) * -1px) 50% / calc(var(--size) * 1px) 100% no-repeat,
+		var(--color, red);
+	background-clip: text;
+	color: transparent;
+	font-size: var(--font-size);
+	animation: spotlight calc(var(--speed) * 1s) infinite linear;
+	filter: url(#magnify);
+}
+
+@keyframes spotlight {
+	50%, 100% {
+		background-position: calc(100% + (var(--size) * 1px)) 100%;
+	}
+}
+
+svg {
+	position: fixed;
+	bottom: 100%;
+  overflow: visible;
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
